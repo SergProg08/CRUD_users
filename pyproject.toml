@@ -1,13 +1,14 @@
 [project]
 name = "crud-users"
 version = "0.1.0"
-description = "Add your description here"
+description = "CRUD API для пользователей: FastAPI, async SQLAlchemy, PostgreSQL, Alembic"
 readme = "README.md"
 authors = [
     { name = "SergProg08", email = "rybakvasilii1608@gmail.com" }
 ]
 requires-python = ">=3.12"
 dependencies = [
+    "alembic>=1.20.0",
     "asyncpg>=0.32.0",
     "bcrypt>=5.0.0",
     "fastapi>=0.143.0",
@@ -21,6 +22,10 @@ dependencies = [
 [build-system]
 requires = ["uv_build>=0.12.23,<0.13.0"]
 build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
 
 [dependency-groups]
 dev = [

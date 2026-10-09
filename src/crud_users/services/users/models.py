@@ -1,5 +1,5 @@
 """ORM-модель пользователя."""
-from uuid import UUID, uuid4
+import uuid
 
 from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column
@@ -12,7 +12,7 @@ class User(Base, TimestampMixin):
 
     __tablename__ = "users"
 
-    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
     # unique=True + index=True -> один UNIQUE INDEX: он и ускоряет поиск по email,
     # и не даёт вставить дубликат (БД выбросит IntegrityError -> наш 409).
     email: Mapped[str] = mapped_column(String(255), unique=True, index=True)

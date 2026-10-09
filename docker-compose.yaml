@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: crud_users_db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: crud_user
+      POSTGRES_PASSWORD: crud_password
+      POSTGRES_DB: crud_users
+    volumes:
+      - crud_users_pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  crud_users_pgdata:
